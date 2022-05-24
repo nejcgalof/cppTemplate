@@ -1,6 +1,6 @@
 ## Docker Instructions
 
-Note: Alternative in VSCode you can use Devcontainer.json for access or create a development container. [Read more](README_DEVCONTAINERJSON.md).
+Note: Alternative you can access or create a development container with Devcontainer.json. [Read more](README_DEVCONTAINERJSON.md).
 
 If you have [Docker](https://www.docker.com/) installed, you can run this
 in your terminal, when the Dockerfile is inside the `.devcontainer` directory:
