@@ -18,6 +18,9 @@ RUN python3 -m pip install --upgrade pip setuptools && \
     python3 -m pip install conan && \
     conan --version
 
+# Install cmake_format
+RUN python3 -m pip install cmake_format
+
 # By default, anything you run in Docker is done as superuser.
 # Conan runs some install commands as superuser, and will prepend `sudo` to
 # these commands, unless `CONAN_SYSREQUIRES_SUDO=0` is in your env variables.
