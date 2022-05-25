@@ -22,7 +22,12 @@
     // Set *default* container specific settings.json values on container create.
     "settings": {
         "cmake.configureOnOpen": true,
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "C_Cpp.codeAnalysis.runAutomatically": true,
+        "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+        "C_Cpp.codeAnalysis.exclude": {
+            "${workspaceFolder}/out/**": true
+        }
     },
     // Add the IDs of extensions you want installed when the container is created.
     "extensions": [
@@ -32,7 +37,7 @@
         "ms-vscode.cpptools-themes",
         "cschlosser.doxdocgen",
         "mutantdino.resourcemonitor",
-        "streetsidesoftware.code-spell-checker",
+        //"streetsidesoftware.code-spell-checker",
         "enkia.tokyo-night"
     ],
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
