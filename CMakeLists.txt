@@ -20,12 +20,66 @@ set(ENABLE_DEVELOPER_MODE
 # Change this to false if you want to disable warnings_as_errors in developer mode
 set(OPT_WARNINGS_AS_ERRORS_DEVELOPER_DEFAULT TRUE)
 
+# Add project_options v0.22.2
+# https://github.com/aminya/project_options
+include(FetchContent)
+FetchContent_Declare(_project_options URL https://github.com/aminya/project_options/archive/refs/tags/v0.22.2.zip)
+FetchContent_MakeAvailable(_project_options)
+include(${_project_options_SOURCE_DIR}/Index.cmake)
+
+# uncomment to enable vcpkg:
+# install vcpkg dependencies: - should be called before defining project()
+# run_vcpkg()
+
 # Set the project name and language
 project(
   demoProject
   VERSION 0.0.1
   DESCRIPTION ""
   LANGUAGES CXX C)
+
+include(${_project_options_SOURCE_DIR}/src/DynamicProjectOptions.cmake)
+
+# defaulted_project_options sets recommended defaults and provides user and developer
+# modes and full GUI support for choosing options at configure time
+
+# for more flexibility, look into project_options() macro
+
+# Any default can be overridden
+# set(<feature_name>_DEFAULT <value>) - set default for both user and developer modes
+# set(<feature_name>_DEVELOPER_DEFAULT <value>) - set default for developer mode
+# set(<feature_name>_USER_DEFAULT <value>) - set default for user mode
+
+# Initialize project_options variable related to this project
+# This overwrites `project_options` and sets `project_warnings`
+# uncomment the options to enable them:
+set(PCH_HEADERS <vector> <string>)
+
+dynamic_project_options(
+  # Note: PCH is disabled by default in developer mode because these headers become
+  # globally included and they can mask other errors
+  PCH_HEADERS
+  ${PCH_HEADERS}
+  ENABLE_CONAN
+  # CONAN_OPTIONS    # Extra options to pass to conan
+  # MSVC_WARNINGS    # Override the defaults for the MSVC warnings
+  # CLANG_WARNINGS   # Override the defaults for the CLANG warnings
+  # GCC_WARNINGS     # Override the defaults for the GCC warnings
+  CPPCHECK_OPTIONS # Unhelpful CppCheck warnings
+  --enable=style,performance,warning,portability
+  --inline-suppr
+  # We cannot act on a bug/missing feature of cppcheck
+  --suppress=cppcheckError
+  --suppress=internalAstError
+  # if a file does not have an internalAstError, we get an unmatchedSuppression error
+  --suppress=unmatchedSuppression
+  --suppress=passedByValue
+  --suppress=syntaxError
+  --inconclusive)
+
+target_compile_features(project_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
+add_library(demoProject::project_options INTERFACE IMPORTED)
+add_library(demoProject::project_warnings INTERFACE IMPORTED)
 
 # Adding the src:
 add_subdirectory(src)
