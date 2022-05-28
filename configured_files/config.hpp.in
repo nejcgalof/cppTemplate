@@ -1,0 +1,12 @@
+#ifndef DEMOPROJECT_CONFIG_HPP
+#define DEMOPROJECT_CONFIG_HPP
+
+// this is a basic example of how a CMake configured file might look
+// in this particular case, we are using it to set the version number of our executable
+namespace demo_project::cmake {
+static constexpr std::string_view project_name = "@PROJECT_NAME@";
+static constexpr std::string_view project_version = "@PROJECT_VERSION@";
+static constexpr std::string_view git_hash = "@GIT_HASH@";
+}// namespace demo_project::cmake
+
+#endif

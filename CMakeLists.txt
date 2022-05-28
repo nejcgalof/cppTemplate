@@ -33,10 +33,16 @@ include(${_project_options_SOURCE_DIR}/Index.cmake)
 
 # Set the project name and language
 project(
-  demoProject
+  DemoProject
   VERSION 0.0.1
   DESCRIPTION ""
   LANGUAGES CXX C)
+
+execute_process(
+  COMMAND git log -1 --format=%h
+  WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
+  OUTPUT_VARIABLE GIT_HASH
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 include(${_project_options_SOURCE_DIR}/src/DynamicProjectOptions.cmake)
 
@@ -78,8 +84,11 @@ dynamic_project_options(
   --inconclusive)
 
 target_compile_features(project_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
-add_library(demoProject::project_options INTERFACE IMPORTED)
-add_library(demoProject::project_warnings INTERFACE IMPORTED)
+add_library(DemoProject::project_options INTERFACE IMPORTED)
+add_library(DemoProject::project_warnings INTERFACE IMPORTED)
+
+# Configure files based on CMake configuration options
+add_subdirectory(configured_files)
 
 # Adding the src:
 add_subdirectory(src)
