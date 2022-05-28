@@ -1,1 +1,1 @@
-# test_good_practices
+# C++ template
