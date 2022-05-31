@@ -1,0 +1,6 @@
+image: Ubuntu
+
+build_script:
+- cmd: >-
+    cmake --preset unixlike-gcc-debug
+    cmake --build ./out/build/unixlike-gcc-debug/
