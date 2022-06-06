@@ -67,6 +67,11 @@ dynamic_project_options(
   PCH_HEADERS
   ${PCH_HEADERS}
   ENABLE_CONAN
+  ENABLE_SANITIZER_ADDRESS
+  ENABLE_SANITIZER_UNDEFINED_BEHAVIOR
+  #ENABLE_SANITIZER_THREAD
+  ENABLE_SANITIZER_MEMORY
+  ENABLE_INCLUDE_WHAT_YOU_USE
   # CONAN_OPTIONS    # Extra options to pass to conan
   # MSVC_WARNINGS    # Override the defaults for the MSVC warnings
   # CLANG_WARNINGS   # Override the defaults for the CLANG warnings
