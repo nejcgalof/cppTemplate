@@ -1,11 +1,10 @@
 #include <iostream>
 #include <string_view>
 
-#include <internal_use_only/config.hpp>
+#include "informations.hpp"
 
 int main()
 {
-  std::cout << "Program: " << demo_project::cmake::project_name << "\n";
-  std::cout << "Version: " << demo_project::cmake::project_version << "." << demo_project::cmake::git_hash << "\n";
+  std::cout << ProgramInformations();
   return 0;
 }

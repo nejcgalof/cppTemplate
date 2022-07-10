@@ -13,3 +13,8 @@ For example preset unixlike-gcc-debug:
 cmake --preset unixlike-gcc-debug
 cmake --build ./out/build/unixlike-gcc-debug/
 ```
+
+Run preset tests after build. Example for unixlike-gcc-debug:
+```
+ctest --preset test-unixlike-gcc-debug
+```

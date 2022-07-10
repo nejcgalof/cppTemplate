@@ -38,6 +38,10 @@ project(
   DESCRIPTION ""
   LANGUAGES CXX C)
 
+if(PROJECT_IS_TOP_LEVEL)
+  include(CTest)
+endif()
+
 execute_process(
   COMMAND git log -1 --format=%h
   WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
@@ -69,9 +73,10 @@ dynamic_project_options(
   ENABLE_CONAN
   ENABLE_SANITIZER_ADDRESS
   ENABLE_SANITIZER_UNDEFINED_BEHAVIOR
-  #ENABLE_SANITIZER_THREAD
+  # ENABLE_SANITIZER_THREAD
   ENABLE_SANITIZER_MEMORY
   ENABLE_INCLUDE_WHAT_YOU_USE
+  # ENABLE_DOXYGEN
   # CONAN_OPTIONS    # Extra options to pass to conan
   # MSVC_WARNINGS    # Override the defaults for the MSVC warnings
   # CLANG_WARNINGS   # Override the defaults for the CLANG warnings
@@ -97,3 +102,10 @@ add_subdirectory(configured_files)
 
 # Adding the src:
 add_subdirectory(src)
+
+# Adding the tests:
+option(ENABLE_TESTING "Enable the tests" ${PROJECT_IS_TOP_LEVEL})
+if(ENABLE_TESTING)
+  enable_testing()
+  add_subdirectory(test)
+endif()
