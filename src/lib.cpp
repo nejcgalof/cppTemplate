@@ -11,4 +11,4 @@ namespace lib {
          << "Version: " << cmake::library_version << "." << cmake::git_hash << "\n";
     return info.str();
   }
-}// namespace lib
+} // namespace lib
