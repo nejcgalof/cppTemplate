@@ -33,7 +33,7 @@ include(${_project_options_SOURCE_DIR}/Index.cmake)
 
 # Set the project name and language
 project(
-  DemoProject
+  DemoLibrary
   VERSION 0.0.1
   DESCRIPTION ""
   LANGUAGES CXX C)
@@ -76,7 +76,8 @@ dynamic_project_options(
   # ENABLE_SANITIZER_THREAD
   ENABLE_SANITIZER_MEMORY
   ENABLE_INCLUDE_WHAT_YOU_USE
-  # ENABLE_DOXYGEN
+  ENABLE_DOXYGEN
+  ENABLE_COVERAGE
   # CONAN_OPTIONS    # Extra options to pass to conan
   # MSVC_WARNINGS    # Override the defaults for the MSVC warnings
   # CLANG_WARNINGS   # Override the defaults for the CLANG warnings
@@ -94,8 +95,8 @@ dynamic_project_options(
   --inconclusive)
 
 target_compile_features(project_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
-add_library(DemoProject::project_options INTERFACE IMPORTED)
-add_library(DemoProject::project_warnings INTERFACE IMPORTED)
+add_library(DemoLibrary::project_options INTERFACE IMPORTED)
+add_library(DemoLibrary::project_warnings INTERFACE IMPORTED)
 
 # Configure files based on CMake configuration options
 add_subdirectory(configured_files)

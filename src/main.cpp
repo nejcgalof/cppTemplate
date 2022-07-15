@@ -1,10 +1,9 @@
 #include <iostream>
-#include <string_view>
-
-#include "informations.hpp"
+#include <lib.hpp>
+#include <string>
 
 int main()
 {
-  std::cout << ProgramInformations();
+  std::cout << lib::LibInformations();
   return 0;
 }
