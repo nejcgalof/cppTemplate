@@ -7,6 +7,6 @@ namespace lib::cmake {
   static constexpr std::string_view library_name = "@PROJECT_NAME@";
   static constexpr std::string_view library_version = "@PROJECT_VERSION@";
   static constexpr std::string_view git_hash = "@GIT_HASH@";
-}// namespace lib::cmake
+} // namespace lib::cmake
 
 #endif

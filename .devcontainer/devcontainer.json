@@ -27,7 +27,10 @@
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
         "C_Cpp.codeAnalysis.exclude": {
             "${workspaceFolder}/out/**": true
-        }
+        },
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
     },
     // Add the IDs of extensions you want installed when the container is created.
     "extensions": [
