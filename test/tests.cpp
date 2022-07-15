@@ -5,7 +5,6 @@
 
 TEST_CASE("Factorials are computed", "[factorial]") { REQUIRE(1 + 2 == 3); }
 
-
 TEST_CASE("Factorials are computed2", "[factorial]")
 {
   // std::string lib_informations = lib::LibInformations();
