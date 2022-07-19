@@ -20,10 +20,10 @@ set(ENABLE_DEVELOPER_MODE
 # Change this to false if you want to disable warnings_as_errors in developer mode
 set(OPT_WARNINGS_AS_ERRORS_DEVELOPER_DEFAULT TRUE)
 
-# Add project_options v0.22.2
+# Add project_options v0.24.0
 # https://github.com/aminya/project_options
 include(FetchContent)
-FetchContent_Declare(_project_options URL https://github.com/aminya/project_options/archive/refs/tags/v0.22.2.zip)
+FetchContent_Declare(_project_options URL https://github.com/aminya/project_options/archive/refs/tags/v0.24.0.zip)
 FetchContent_MakeAvailable(_project_options)
 include(${_project_options_SOURCE_DIR}/Index.cmake)
 
@@ -82,8 +82,9 @@ dynamic_project_options(
   ENABLE_SANITIZER_ADDRESS
   ENABLE_SANITIZER_UNDEFINED_BEHAVIOR
   # ENABLE_SANITIZER_THREAD
-  ENABLE_SANITIZER_MEMORY
+  # ENABLE_SANITIZER_MEMORY
   ENABLE_INCLUDE_WHAT_YOU_USE
+  ENABLE_COVERAGE
   # ENABLE_BUILD_WITH_TIME_TRACE # Only Clang. Get info, where compiler spend most of the time. .json file located in Folder CMakeFiles, open with chrome://tracing/
   # ${ENABLE_COVERAGE}
   ENABLE_DOXYGEN
