@@ -68,6 +68,10 @@ include(${_project_options_SOURCE_DIR}/src/DynamicProjectOptions.cmake)
 # This overwrites `project_options` and sets `project_warnings`
 # uncomment the options to enable them:
 set(PCH_HEADERS <vector> <string>)
+# set(ENABLE_COVERAGE "ENABLE_COVERAGE")
+# if(${ENABLE_COVERAGE})
+#   set(COVERAGE_ARGS REPORTER xml)
+# endif()
 
 dynamic_project_options(
   # Note: PCH is disabled by default in developer mode because these headers become
@@ -80,8 +84,12 @@ dynamic_project_options(
   # ENABLE_SANITIZER_THREAD
   ENABLE_SANITIZER_MEMORY
   ENABLE_INCLUDE_WHAT_YOU_USE
+  # ENABLE_BUILD_WITH_TIME_TRACE # Only Clang. Get info, where compiler spend most of the time. .json file located in Folder CMakeFiles, open with chrome://tracing/
+  # ${ENABLE_COVERAGE}
   ENABLE_DOXYGEN
-  ENABLE_COVERAGE
+  # DOXYGEN_THEME
+  # "${CMAKE_CURRENT_LIST_DIR}/css/my_custom_theme.css"
+  # ENABLE_COVERAGE
   # CONAN_OPTIONS    # Extra options to pass to conan
   # MSVC_WARNINGS    # Override the defaults for the MSVC warnings
   # CLANG_WARNINGS   # Override the defaults for the CLANG warnings
